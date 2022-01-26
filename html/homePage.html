@@ -5,8 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <link
+        rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" 
+        crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/homePage.css" />
 </head>
 <body>
-    
+    <header>
+        <h1 class="header">Welcome <span class="name">Israa</span> in your todo list</h1>
+    </header>
+    <section class="num-task">
+       <span>Tasks to be done :   </span>
+       <i class="fas fa-chart-pie"></i>
+       <span><span class="complete-task">1</span> / <span class="toatal-task">3</span></span>
+    </section>
+    <section class="add-task">
+        <button class="add-btn"><i class="fas fa-plus"></i></button>
+    </section>
+    <section class="all-tasks">
+        <div class="task">
+            <div class="head-task">
+                    <span class='task-container'>
+                    <button class="check" ><i class="fas fa-check-square"></i></button>
+                    <span class="title-task"> Task1 </span>
+                    <button class="edit" ><i class="fas fa-edit"></i></button>
+                    <button class="delete"><i class="fas fa-trash-alt"></i></button>
+                    </span>
+            </div>
+            <div class="info-task">
+                <span class="time-task">1 Day</span>
+                <p class="desc-task">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet, asperiores.</p>
+            </div>
+        </div>
+        <div class="task">
+            <div class="head-task checked">
+                    <span class='task-container'>
+                    <button class="check" ><i class="fas fa-check-square"></i></button>
+                    <span class="title-task"> Task2 </span>
+                    <button class="edit" ><i class="fas fa-edit"></i></button>
+                    <button class="delete"><i class="fas fa-trash-alt"></i></button>
+                    </span>
+            </div>
+            <div class="info-task">
+                <span class="time-task">2 Day</span>
+                <p class="desc-task">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet, asperiores.</p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

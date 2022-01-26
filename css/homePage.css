@@ -1,0 +1,84 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+    --bgColor:#AACCAC;
+    --mainColor:#407376;
+    --whiteColor:#FFF;
+}
+body {
+    background-color: var(--bgColor);
+}
+.header {
+    text-align: center;
+    color:var(--whiteColor) ;
+    font-size: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.num-task {
+    text-align: center;
+    color: var(--mainColor);
+    font-weight: bold;
+    font-size: 1.5em;
+}
+.add-task .add-btn {
+    background-color: var(--mainColor);
+    border: 1px solid var(--mainColor);
+    padding: .5em;
+    margin-top: 1em;
+    position: relative;
+    left: 80vw;
+    cursor: pointer;
+    margin-bottom: 2em;
+}
+.add-task .add-btn i {
+    color: var(--whiteColor);
+    font-size: 3em;
+}
+.all-tasks{
+    width: 80vw;
+    margin: 0 auto ;
+}
+.all-tasks .task {
+    margin-bottom: 1em;
+}
+.all-tasks .task .head-task {
+    background-color: var(--whiteColor);
+    padding: 1em;
+    border: 1px solid var(--mainColor);
+}
+.all-tasks .task .head-task button {
+    background-color: transparent;
+    border: none;
+}
+.all-tasks .task .head-task button i {
+    font-size: 2em;
+}
+.all-tasks .task .head-task button.check i,
+.all-tasks .task .head-task button.edit i {
+    color: var(--mainColor);
+}
+.all-tasks .task .head-task button.delete i{
+    color: red;
+}
+.all-tasks .task .head-task .title-task {
+    color: var(--mainColor);
+    font-weight: bold;
+    margin-left: 2%;
+    margin-right: 40%;
+    font-size: 1.5em;
+}
+.all-tasks .task .info-task {
+    background-color: var(--whiteColor);
+    padding: 1em;
+    border: 1px solid var(--mainColor);
+    border-top:0 ;
+    font-size: 1.2em;
+    display: block;
+}
+.checked {
+    background-color: rgba(64, 115, 118,.5);
+}
