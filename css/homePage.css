@@ -82,3 +82,51 @@ body {
 .checked {
     background-color: rgba(64, 115, 118,.5);
 }
+.added {
+    background-color:rgba(170, 204, 172,.5)
+}
+.add-task .add-form {
+    background-color: var(--bgColor);
+    z-index: 10;
+    position: absolute;
+    padding: 1em;
+    width: 90vw;
+    margin: 0 5vw;
+    display: none;
+}
+.add-task .add-form i {
+    color: var(--mainColor);
+    font-size: 2em;
+    position: relative;
+    left: 70vw;
+    margin-bottom: .5em;
+    cursor: pointer;
+} 
+.add-task .add-form form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.add-task .add-form input { 
+    display: block;
+    margin-bottom: .5em;
+    font-size: 1em;
+    height: 5vh;
+    padding: .3em;
+    width: 80vw;
+    outline: none;
+}
+.add-task .add-form input.desc-task-form {
+    height: 10vh;
+}
+.add-task .add-form button {
+    width: 80vw;
+    color: var(--whiteColor);
+    background-color: var(--mainColor);
+    border: 1px solid var(--mainColor);
+    height: 5vh;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+}
