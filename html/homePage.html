@@ -12,7 +12,7 @@
     />
     <link rel="stylesheet" href="../css/homePage.css" />
 </head>
-<body>
+<body class="added">
     <header>
         <h1 class="header">Welcome <span class="name">Israa</span> in your todo list</h1>
     </header>
@@ -23,6 +23,15 @@
     </section>
     <section class="add-task">
         <button class="add-btn"><i class="fas fa-plus"></i></button>
+        <div class="add-form">
+            <i class="fas fa-times"></i>
+            <form>
+                <input type="text" class="title-task-form" name="title" placeholder="Write title task" /> 
+                <input type="text" class="time-task-form" name="time" placeholder="Write time for task" />
+                <input type="text" class="desc-task-form" name="time" placeholder="Write time for task" /> 
+                <button type="submit" class="add-task-btn">Add</button>
+            </form>
+        </div>
     </section>
     <section class="all-tasks">
         <div class="task">
