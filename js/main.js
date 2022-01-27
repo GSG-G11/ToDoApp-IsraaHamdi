@@ -58,8 +58,8 @@ const removeFromLocalStorage = function (numberOfTasks) {
                     </span>
                 </div>
                 <div class="info-task ${checked ? "checked" : ""}">
-                    <span class="time-task">${taskTime}</span> 
-                    <p class="desc-task">${taskDesc}</p>
+                    <span class="time-task"><b>Deadline:</b>${taskTime}</span> 
+                    <p class="desc-task"><b>Description:</b> ${taskDesc}</p>
                     <span class="hidden-info" onclick="hidden1(${index})">hidden info</span>
                 </div>
             </div>`
