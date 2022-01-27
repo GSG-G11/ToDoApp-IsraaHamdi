@@ -48,3 +48,15 @@ button {
     line-height: 0vh;
     border: 1px solid var(--bgColor);
 }
+@media screen and (min-width:768px) {
+    main {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    input {
+        width: 20vw;
+    }
+    button {
+        width: 20vw;
+    }
+}
