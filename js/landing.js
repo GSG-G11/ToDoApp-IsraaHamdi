@@ -8,5 +8,5 @@ nextPage.addEventListener('click',()=>{
     yourName=inputName.value
     if (yourName == '') return
     localStorage.setItem('name',yourName)
-    location.href="html/homePage.html"
+    location.href="/html/homePage.html"
 })
