@@ -8,5 +8,5 @@ nextPage.addEventListener('click',()=>{
     yourName=inputName.value
     if (yourName == '') return
     localStorage.setItem('name',yourName)
-    window.location.href="ToDoApp-IsraaHamdi/html/homePage.html"
+    window.location.href="/ToDoApp-IsraaHamdi/html/homePage.html"
 })
