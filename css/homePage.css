@@ -95,7 +95,8 @@ body {
 .added {
     background-color:rgba(170, 204, 172,.5)
 }
-.add-task .add-form {
+.add-task .add-form,
+.add-task .edit-form {
     background-color: var(--bgColor);
     z-index: 10;
     position: absolute;
@@ -104,7 +105,8 @@ body {
     margin: 0 5vw;
     display: none;
 }
-.add-task .add-form i {
+.add-task .add-form i,
+.add-task .edit-form i {
     color: var(--mainColor);
     font-size: 2em;
     position: relative;
@@ -112,13 +114,15 @@ body {
     margin-bottom: .5em;
     cursor: pointer;
 } 
-.add-task .add-form form {
+.add-task .add-form form
+,.add-task .edit-form form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.add-task .add-form input { 
+.add-task .add-form input,
+.add-task .edit-form input { 
     display: block;
     margin-bottom: .5em;
     font-size: 1em;
@@ -127,10 +131,12 @@ body {
     width: 80vw;
     outline: none;
 }
-.add-task .add-form input.desc-task-form {
+.add-task .add-form input.desc-task-form
+.add-task .edit-form input.desc-task-form {
     height: 10vh;
 }
-.add-task .add-form button {
+.add-task .add-form button,
+.add-task .edit-form button {
     width: 80vw;
     color: var(--whiteColor);
     background-color: var(--mainColor);
@@ -148,17 +154,21 @@ body {
     .all-tasks{
         width: 50vw;
     }
-    .add-task .add-form {
+    .add-task .add-form,
+    .add-task .edit-form {
         width: 40vw;
         margin: 0 30vw;
     }
-    .add-task .add-form i {
+    .add-task .add-form i,
+    .add-task .edit-form i {
         left:35vw
     }
-    .add-task .add-form input { 
+    .add-task .add-form input
+    .add-task .edit-form input { 
         width: 30vw;
     }
-    .add-task .add-form button {
+    .add-task .add-form button,
+    .add-task .edit-form button {
         width: 30vw;
     }
 }
