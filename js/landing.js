@@ -4,7 +4,7 @@ let localName=document.getElementById('local-name')
 let yourName
 
 //go to the home page
-nextPage.addEventListener('submit',()=>{
+nextPage.addEventListener('click',()=>{
     yourName=inputName.value
     if (yourName == '') return
     localStorage.setItem('name',yourName)
