@@ -2,9 +2,7 @@ let body=document.getElementsByTagName('body')
 let localName=document.getElementById('local-name')
 let addBtn=document.getElementsByClassName('add-btn')
 let addForm=document.getElementsByClassName('add-form')
-let editForm=document.getElementsByClassName('edit-form')
-let addTaskBtn = document.querySelector(".add-task-btn"); 
-let editTaskBtn = document.querySelector(".edit-task-btn"); 
+let editForm=document.getElementsByClassName('edit-form') 
 let closeForm=document.getElementById('close')
 let editCloseForm=document.getElementById('edit-close')
 let titleTask=document.querySelector('.title-task-form')
@@ -44,32 +42,25 @@ const addToLocalStorage = function (taskTitle,taskTime,taskDesc, index) {
 }
 // remove function from local storage
 const removeFromLocalStorage = function (numberOfTasks) {
-    let newStoredTask = storedTasks.filter(
-      (item) => item.numberOfTasks !== numberOfTasks
-    );
+    let newStoredTask = storedTasks.filter((item) => item.numberOfTasks !== numberOfTasks);
     storedTasks = newStoredTask;
     localStorage.setItem("tasks", JSON.stringify(newStoredTask));
-    storedTasks.forEach( task => {
-      if(task.check == true) {
-        completeTask--
-        taskNumberCompleted.textContent=completeTask
-      } 
-    })
-  };
+};
 
   const addTask = function (taskTitle,taskTime,taskDesc, index,checked) {
-  myTask=`   <div class="task" id="task-${index}">
+      myTask=`   <div class="task" id="task-${index}">
                 <div class="head-task ${checked ? "checked" : ""}">
-                        <span class='task-container'>
-                        <button class="check" onclick="check(${index})"><i class="fas fa-check-square"></i></button>
-                        <span class="title-task"> ${taskTitle} </span>
-                        <button class="edit"onclick="edit(${index})" ><i class="fas fa-edit"></i></button>
-                        <button class="delete" onclick="deleteTask(${index})"><i class="fas fa-trash-alt"></i></button>
-                        </span>
+                    <span class='task-container'>
+                      <button class="check" onclick="check(${index})"><i class="fas fa-check-square"></i></button>
+                      <span class="title-task">${taskTitle}<small onclick="display(${index})"> more info</small> </span>
+                      <button class="edit" onclick="edit(${index})" ><i class="fas fa-edit"></i></button>
+                      <button class="delete" onclick="deleteTask(${index})"><i class="fas fa-trash-alt"></i></button>
+                    </span>
                 </div>
                 <div class="info-task ${checked ? "checked" : ""}">
-                    <span class="time-task">${taskTime}</span>
+                    <span class="time-task">${taskTime}</span> 
                     <p class="desc-task">${taskDesc}</p>
+                    <span class="hidden-info" onclick="hidden1(${index})">hidden info</span>
                 </div>
             </div>`
     taskList.insertAdjacentHTML("afterbegin", myTask);
@@ -96,11 +87,10 @@ const removeFromLocalStorage = function (numberOfTasks) {
     titleValue = " ";
     timeValue = " ";
     descValue = " ";
-  });
-// DELETE FUNCTION
+});
+// DELETE FUNCTION for task that not needed
 function deleteTask(numberOfTasks) {
-
-    // Now we delete that tast which we have slided out
+    // Now we delete that task which we have slided out
     let deletedELment = document.getElementById(`task-${numberOfTasks}`);
     let newTasks = tasks.filter((item) => item.numberOfTasks !== numberOfTasks);
     tasks = newTasks;
@@ -132,14 +122,14 @@ function edit(index) {
     editForm[0].style.display ="none"
     body[0].classList.remove('added')
   })
-
   let task=tasks[index]
   console.log(task)
   editTitleTask.value=task.title
   editTimeTask.value=task.time
   editDescTask.value=task.desc
   editSubmitForm.addEventListener('submit',()=>{
-    let objectIndex = storedTasks.findIndex((i) => i.numberOfTasks == index); //find the object index within array using the numberOfTask
+     //find the object index within array using the numberOfTask
+    let objectIndex = storedTasks.findIndex((i) => i.numberOfTasks == index);
     console.log(objectIndex)
     storedTasks[objectIndex].taskTitle = editTitleTask.value;
     storedTasks[objectIndex].taskTime = editTimeTask.value;
@@ -150,7 +140,8 @@ function edit(index) {
   })
 }
 window.onload = () => {   
-    let printedtasks = JSON.parse(localStorage.getItem("tasks")) || []; // Empty array in case there is no Tasks key in localStorage
+     // Empty array in case there is no Tasks key in localStorage
+    let printedtasks = JSON.parse(localStorage.getItem("tasks")) || []; 
     storedTasks = printedtasks;
     printedtasks.map((ele, index) => {
       if (ele.check == true) {
@@ -159,11 +150,19 @@ window.onload = () => {
         checkBtn.onclick = ""
         completeTask++
         taskNumberCompleted.textContent=completeTask
-
       }else {
         addTask(ele.taskTitle,ele.taskTime,ele.taskDesc, ele.numberOfTasks, ele.check);
       }
     });
      //define Task Number 
      taskNumber.innerText=tasks.length
-  };
+};
+function display(index) {
+  let moreInfo =document.querySelector(`#task-${index} .info-task`)
+  moreInfo.style.display ='block'
+}
+function hidden1(index) {
+  let moreInfo =document.querySelector(`#task-${index} .info-task`)
+  // let moreInfo =document.querySelector(`#task-${index} .info-task .hidden-info`)
+  moreInfo.style.display ='none'
+}
