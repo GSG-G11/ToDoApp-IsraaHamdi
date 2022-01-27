@@ -43,9 +43,9 @@ const removeFromLocalStorage = function (numberOfTasks) {
     localStorage.setItem("tasks", JSON.stringify(newStoredTask));
   };
 
-  const addTask = function (taskTitle,taskTime,taskDesc, index) {
+  const addTask = function (taskTitle,taskTime,taskDesc, index,checked) {
   myTask=`   <div class="task" id="task-${index}">
-                <div class="head-task">
+                <div class="head-task ${checked ? "checked" : ""}">
                         <span class='task-container'>
                         <button class="check" onclick="check(${index})"><i class="fas fa-check-square"></i></button>
                         <span class="title-task"> ${taskTitle} </span>
@@ -53,7 +53,7 @@ const removeFromLocalStorage = function (numberOfTasks) {
                         <button class="delete" onclick="deleteTask(${index})"><i class="fas fa-trash-alt"></i></button>
                         </span>
                 </div>
-                <div class="info-task">
+                <div class="info-task ${checked ? "checked" : ""}">
                     <span class="time-task">${taskTime}</span>
                     <p class="desc-task">${taskDesc}</p>
                 </div>
@@ -105,6 +105,20 @@ function deleteTask(numberOfTasks) {
     storedTasks[objectIndex].check = !storedTasks[objectIndex].check; // negation of previous value
     localStorage.setItem("tasks", JSON.stringify(storedTasks));
     let checkBtn = headTask.childNodes[1].childNodes[1];
-    console.log(checkBtn)
     checkBtn.onclick = ""
-  }
+}
+window.onload = () => {   
+    let printedtasks = JSON.parse(localStorage.getItem("tasks")) || []; // Empty array in case there is no Tasks key in localStorage
+    storedTasks = printedtasks;
+    printedtasks.map((ele, index) => {
+      if (ele.check == true) {
+        addTask(ele.taskTitle,ele.taskTime,ele.taskDesc, ele.numberOfTasks, ele.check);
+        let checkBtn = document.getElementById(`task-${index}`).childNodes[1].childNodes[1];
+        checkBtn.onclick = ""
+      }else {
+        addTask(ele.taskTitle,ele.taskTime,ele.taskDesc, ele.numberOfTasks, ele.check);
+      }
+    });
+     //define Task Number 
+     taskNumber.innerText=tasks.length
+  };
