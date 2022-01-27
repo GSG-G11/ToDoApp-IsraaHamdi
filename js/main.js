@@ -1,3 +1,4 @@
+let body=document.getElementsByTagName('body')
 let localName=document.getElementById('local-name')
 let addBtn=document.getElementsByClassName('add-btn')
 let addForm=document.getElementsByClassName('add-form')
@@ -18,11 +19,13 @@ let storedTasks = []; //for local storage
 localName.textContent=localStorage.getItem('name')
 //open add form 
 addBtn[0].addEventListener('click',()=>{
- addForm[0].style.display ="block"
+    body[0].classList.add('added')
+    addForm[0].style.display ="block"
 })
 //close add form
 closeForm.addEventListener('click',()=>{
     addForm[0].style.display ="none"
+    body[0].classList.remove('added')
 })
 
 // add Task to local storage
@@ -44,7 +47,7 @@ const removeFromLocalStorage = function (numberOfTasks) {
   myTask=`   <div class="task" id="task-${index}">
                 <div class="head-task">
                         <span class='task-container'>
-                        <button class="check" ><i class="fas fa-check-square"></i></button>
+                        <button class="check" onclick="check(${index})"><i class="fas fa-check-square"></i></button>
                         <span class="title-task"> ${taskTitle} </span>
                         <button class="edit" ><i class="fas fa-edit"></i></button>
                         <button class="delete" onclick="deleteTask(${index})"><i class="fas fa-trash-alt"></i></button>
@@ -72,12 +75,13 @@ const removeFromLocalStorage = function (numberOfTasks) {
     addToLocalStorage(titleValue,timeValue,descValue, index);
      //define Task Number 
      taskNumber.innerText=tasks.length
-    // clearing the input field
-    titleValue = "";
-    timeValue = "";
-    descValue = "";
     //close the add form
     addForm[0].style.display ="none"
+    body[0].classList.remove('added')
+    // clearing the input field
+    titleValue = " ";
+    timeValue = " ";
+    descValue = " ";
   });
 // DELETE FUNCTION
 function deleteTask(numberOfTasks) {
@@ -89,4 +93,18 @@ function deleteTask(numberOfTasks) {
     removeFromLocalStorage(numberOfTasks);
     //define Task Number 
     taskNumber.innerText=tasks.length
+  }
+
+  function check(index) {
+    //add checked class to task
+    let headTask = document.getElementById(`task-${index}`).childNodes[1]
+    let infoTask = document.getElementById(`task-${index}`).childNodes[3]
+    headTask.classList.add("checked");
+    infoTask.classList.add("checked");
+    let objectIndex = storedTasks.findIndex((i) => i.numberOfTasks == index);
+    storedTasks[objectIndex].check = !storedTasks[objectIndex].check; // negation of previous value
+    localStorage.setItem("tasks", JSON.stringify(storedTasks));
+    let checkBtn = headTask.childNodes[1].childNodes[1];
+    console.log(checkBtn)
+    checkBtn.onclick = ""
   }

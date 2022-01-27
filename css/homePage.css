@@ -80,7 +80,7 @@ body {
     display: block;
 }
 .checked {
-    background-color: rgba(64, 115, 118,.5);
+    background-color: rgba(64, 115, 118,.5) !important;
 }
 .added {
     background-color:rgba(170, 204, 172,.5)
