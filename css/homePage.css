@@ -18,6 +18,9 @@ body {
     margin-top: 2em;
     margin-bottom: 2em;
 }
+.name{
+    color: var(--mainColor);
+}
 .num-task {
     text-align: center;
     color: var(--mainColor);
@@ -87,6 +90,9 @@ body {
     border: 1px solid var(--mainColor);
     border-top:0 ;
     font-size: 1.2em;
+    display: none;
+}
+.display{
     display: block;
 }
 .checked {
@@ -171,4 +177,14 @@ body {
     .add-task .edit-form button {
         width: 30vw;
     }
+}
+.hidden-info {
+    color: rgb(160, 160, 226);
+    cursor: pointer;
+    font-size: .5em;
+}
+small{
+    color: rgb(160, 160, 226);
+    cursor: pointer;
+    font-size: .5em;
 }
