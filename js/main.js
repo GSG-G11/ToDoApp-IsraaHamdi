@@ -17,6 +17,8 @@ let taskList = document.querySelector(".all-tasks");
 let form = document.querySelector(".submit-form");
 let editSubmitForm = document.querySelector(".edit-Submit-form");
 let taskNumber= document.querySelector('.total-task')
+let taskNumberCompleted= document.querySelector('.complete-task')
+let completeTask=0
 let myTask; 
 let tasks = []; 
 let storedTasks = []; //for local storage
@@ -47,6 +49,12 @@ const removeFromLocalStorage = function (numberOfTasks) {
     );
     storedTasks = newStoredTask;
     localStorage.setItem("tasks", JSON.stringify(newStoredTask));
+    storedTasks.forEach( task => {
+      if(task.check == true) {
+        completeTask--
+        taskNumberCompleted.textContent=completeTask
+      } 
+    })
   };
 
   const addTask = function (taskTitle,taskTime,taskDesc, index,checked) {
@@ -91,6 +99,7 @@ const removeFromLocalStorage = function (numberOfTasks) {
   });
 // DELETE FUNCTION
 function deleteTask(numberOfTasks) {
+
     // Now we delete that tast which we have slided out
     let deletedELment = document.getElementById(`task-${numberOfTasks}`);
     let newTasks = tasks.filter((item) => item.numberOfTasks !== numberOfTasks);
@@ -111,6 +120,8 @@ function deleteTask(numberOfTasks) {
     localStorage.setItem("tasks", JSON.stringify(storedTasks));
     let checkBtn = headTask.childNodes[1].childNodes[1];
     checkBtn.onclick = ""
+    completeTask++
+    taskNumberCompleted.textContent=completeTask
 }
 //Edit Funtion for task when done or not
 function edit(index) {
@@ -146,6 +157,9 @@ window.onload = () => {
         addTask(ele.taskTitle,ele.taskTime,ele.taskDesc, ele.numberOfTasks, ele.check);
         let checkBtn = document.getElementById(`task-${index}`).childNodes[1].childNodes[1];
         checkBtn.onclick = ""
+        completeTask++
+        taskNumberCompleted.textContent=completeTask
+
       }else {
         addTask(ele.taskTitle,ele.taskTime,ele.taskDesc, ele.numberOfTasks, ele.check);
       }
