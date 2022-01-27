@@ -31,6 +31,14 @@ const addToLocalStorage = function (taskTitle,taskTime,taskDesc, index) {
                      check: false, numberOfTasks: index });
   localStorage.setItem("tasks", JSON.stringify(storedTasks));
 }
+// remove function from local storage
+const removeFromLocalStorage = function (numberOfTasks) {
+    let newStoredTask = storedTasks.filter(
+      (item) => item.numberOfTasks !== numberOfTasks
+    );
+    storedTasks = newStoredTask;
+    localStorage.setItem("tasks", JSON.stringify(newStoredTask));
+  };
 
   const addTask = function (taskTitle,taskTime,taskDesc, index) {
   myTask=`   <div class="task" id="task-${index}">
@@ -39,7 +47,7 @@ const addToLocalStorage = function (taskTitle,taskTime,taskDesc, index) {
                         <button class="check" ><i class="fas fa-check-square"></i></button>
                         <span class="title-task"> ${taskTitle} </span>
                         <button class="edit" ><i class="fas fa-edit"></i></button>
-                        <button class="delete"><i class="fas fa-trash-alt"></i></button>
+                        <button class="delete" onclick="deleteTask(${index})"><i class="fas fa-trash-alt"></i></button>
                         </span>
                 </div>
                 <div class="info-task">
@@ -71,3 +79,14 @@ const addToLocalStorage = function (taskTitle,taskTime,taskDesc, index) {
     //close the add form
     addForm[0].style.display ="none"
   });
+// DELETE FUNCTION
+function deleteTask(numberOfTasks) {
+    // Now we delete that tast which we have slided out
+    let deletedELment = document.getElementById(`task-${numberOfTasks}`);
+    let newTasks = tasks.filter((item) => item.numberOfTasks !== numberOfTasks);
+    tasks = newTasks;
+    deletedELment.remove();
+    removeFromLocalStorage(numberOfTasks);
+    //define Task Number 
+    taskNumber.innerText=tasks.length
+  }
