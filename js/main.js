@@ -116,7 +116,7 @@ function deleteTask(numberOfTasks) {
 function edit(index) {
   body[0].classList.add('added')
   editForm[0].style.display ="block"
-  //close add form
+  //close edit form
   editCloseForm.addEventListener('click',()=>{
     editForm[0].style.display ="none"
     body[0].classList.remove('added')
